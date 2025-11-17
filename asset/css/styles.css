@@ -1738,6 +1738,43 @@ body.loaded #preloader {
   }
 }
 
+@media (max-width: 480px) {
+  .stats-section {
+    padding: 2rem 0.75rem;
+  }
+
+  .stats-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .stats-header p {
+    font-size: 0.9rem;
+  }
+
+  .stats-grid {
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+
 
 .projects-section {
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);

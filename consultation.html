@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta
+      name="keywords"
+      content="Softray, SOFTRAY, ray, Raymond, portfolio, soft, website, consultation, web development, design"
+    />
+    <meta
+      name="description"
+      content="Professional web development and design consultation services. Get expert advice on your digital projects."
+    />
+
+    <!-- font links -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- css link  -->
+    <link rel="stylesheet" href="/asset/css/styles.css">
+    <link rel="shortcut icon" href="asset/image/avater.JPG" type="image/x-icon">
+    <title>SOFTRAYS - Consultation Services</title>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "AX5zccDXx8DhbYBHG",
+      });
+   })();
+</script>
+
+
+</head>
+<body>
+
+   <div class="bodyinner">
+
+     <nav class="navbar">
+       <div class="nav-container">
+         <div class="nav-brand">
+           <a href="index.html" class="brand-text">
+             <span class="brand-icon">SR</span>
+             SoftRay
+           </a>
+         </div>
+
+         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+           <span></span>
+           <span></span>
+           <span></span>
+         </button>
+
+         <ul class="nav-menu" id="navMenu">
+           <li><a href="index.html" class="nav-link"><span>Home</span></a></li>
+           <li><a href="about.html" class="nav-link"><span>About</span></a></li>
+           <li><a href="index.html#projects" class="nav-link"><span>Projects</span></a></li>
+           <li><a href="contact.html" class="nav-link"><span>Contact</span></a></li>
+           <li><a href="softray.pdf" class="nav-link resume-btn" download><i class="fas fa-download"></i><span>Resume</span></a></li>
+         </ul>
+
+
+       </div>
+     </nav>
+
+<!-- Consultation Hero Section -->
+<section class="about-section" id="consultation-hero">
+  <div class="about-content">
+
+    <div class="hero-text-wrapper">
+      <div class="hero-greeting">
+        <span class="greeting-label">Professional Services</span>
+      </div>
+
+      <h1 class="about-title">
+        <span class="gradient-text">Web Development Consultation</span>
+        <br>
+        <span class="role-text">Expert Guidance for Your Digital Vision</span>
+      </h1>
+
+      <p class="about-subtitle">
+        Transform your ideas into reality with personalized consultation services. From concept to deployment, I provide strategic guidance and technical expertise to ensure your project succeeds.
+      </p>
+
+      <div class="cta-group">
+        <a href="#booking" class="cta-button primary">
+          <i class="fas fa-calendar-check"></i>
+          <span>Book Consultation</span>
+        </a>
+        <a href="#services" class="cta-button secondary">
+          <span>View Services</span>
+          <i class="fas fa-arrow-down"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="projects-section" id="services">
+  <div class="projects-content">
+    <div class="projects-header">
+      <span class="section-label">What I Offer</span>
+      <h2>Consultation Services</h2>
+      <p class="projects-subtitle">Comprehensive solutions tailored to your unique needs</p>
+    </div>
+
+    <div class="projects-list">
+      <article class="project-card">
+        <div class="project-image-wrapper">
+          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-palette" style="font-size: 3rem; color: white;"></i>
+          </div>
+          <div class="project-overlay"></div>
+          <span class="project-category">
+            <i class="fas fa-palette"></i>
+            <span>Design</span>
+          </span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-info">
+            <h3>UI/UX Design Consultation</h3>
+          </div>
+          <p>Strategic design guidance to create intuitive, user-centered interfaces that drive engagement and conversion.</p>
+          <div class="project-tags">
+            <span class="tag"><i class="fas fa-mobile-alt"></i> Mobile-First</span>
+            <span class="tag"><i class="fas fa-users"></i> User Research</span>
+            <span class="tag"><i class="fas fa-prototype"></i> Prototyping</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image-wrapper">
+          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-code" style="font-size: 3rem; color: white;"></i>
+          </div>
+          <div class="project-overlay"></div>
+          <span class="project-category">
+            <i class="fas fa-code"></i>
+            <span>Development</span>
+          </span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-info">
+            <h3>Technical Architecture</h3>
+          </div>
+          <p>Expert advice on technology stack selection, system architecture, and development best practices.</p>
+          <div class="project-tags">
+            <span class="tag"><i class="fab fa-react"></i> React/Next.js</span>
+            <span class="fab fa-node-js"></i> Node.js</span>
+            <span class="tag"><i class="fas fa-database"></i> Databases</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image-wrapper">
+          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-search" style="font-size: 3rem; color: white;"></i>
+          </div>
+          <div class="project-overlay"></div>
+          <span class="project-category">
+            <i class="fas fa-search"></i>
+            <span>SEO</span>
+          </span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-info">
+            <h3>SEO Strategy & Optimization</h3>
+          </div>
+          <p>Comprehensive SEO consultation to improve search rankings and drive organic traffic to your website.</p>
+          <div class="project-tags">
+            <span class="tag"><i class="fas fa-chart-line"></i> Analytics</span>
+            <span class="tag"><i class="fas fa-keywords"></i> Keywords</span>
+            <span class="tag"><i class="fas fa-link"></i> Backlinks</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image-wrapper">
+          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-rocket" style="font-size: 3rem; color: white;"></i>
+          </div>
+          <div class="project-overlay"></div>
+          <span class="project-category">
+            <i class="fas fa-rocket"></i>
+            <span>Performance</span>
+          </span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-info">
+            <h3>Performance Optimization</h3>
+          </div>
+          <p>Speed up your website and improve user experience with advanced performance optimization techniques.</p>
+          <div class="project-tags">
+            <span class="tag"><i class="fas fa-tachometer-alt"></i> Speed</span>
+            <span class="tag"><i class="fas fa-mobile"></i> Mobile</span>
+            <span class="tag"><i class="fas fa-compress"></i> Compression</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="timeline-section" id="process">
+  <div class="timeline-container">
+    <div class="timeline-header">
+      <span class="section-label">How It Works</span>
+      <h2>Consultation Process</h2>
+      <p>Structured approach to ensure successful project outcomes</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-year">Step 1</span>
+          <h3>Discovery & Analysis</h3>
+          <p>We start with a comprehensive analysis of your current situation, goals, and requirements. This includes reviewing your existing website, understanding your target audience, and identifying key objectives.</p>
+          <div class="timeline-skills">
+            <span>Requirements Gathering</span>
+            <span>Audience Analysis</span>
+            <span>Competitor Research</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-year">Step 2</span>
+          <h3>Strategy Development</h3>
+          <p>Based on our findings, I develop a customized strategy that aligns with your business goals. This includes technology recommendations, timeline planning, and budget considerations.</p>
+          <div class="timeline-skills">
+            <span>Technical Strategy</span>
+            <span>Project Roadmap</span>
+            <span>Budget Planning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-year">Step 3</span>
+          <h3>Implementation Planning</h3>
+          <p>Detailed planning phase where we break down the project into manageable tasks, set milestones, and establish clear deliverables and timelines.</p>
+          <div class="timeline-skills">
+            <span>Task Breakdown</span>
+            <span>Milestone Setting</span>
+            <span>Risk Assessment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-year">Step 4</span>
+          <h3>Execution & Support</h3>
+          <p>Implementation of the agreed strategy with regular check-ins, progress updates, and ongoing support to ensure successful project completion.</p>
+          <div class="timeline-skills">
+            <span>Regular Updates</span>
+            <span>Quality Assurance</span>
+            <span>Post-Launch Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="stats-section" id="pricing">
+  <div class="stats-container">
+    <div class="stats-header">
+      <h2>Consultation Packages</h2>
+      <p>Flexible pricing options to fit your needs and budget</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card pricing-card">
+        <div class="stat-icon">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">Quick Chat</h3>
+          <p class="stat-label">$50</p>
+          <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0; text-align: left;">
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>30-minute consultation</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Initial assessment</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Basic recommendations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stat-card pricing-card featured">
+        <div class="stat-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">Standard</h3>
+          <p class="stat-label">$150</p>
+          <span style="background: #22c55e; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; display: inline-block;">Most Popular</span>
+          <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0; text-align: left;">
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>1-hour detailed consultation</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Comprehensive analysis</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Written recommendations</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Follow-up email support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stat-card pricing-card">
+        <div class="stat-icon">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">Premium</h3>
+          <p class="stat-label">$300</p>
+          <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0; text-align: left;">
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>2-hour in-depth consultation</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Full project strategy</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Detailed implementation plan</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>1-week email support</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Resource recommendations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stat-card pricing-card">
+        <div class="stat-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">Project-Based</h3>
+          <p class="stat-label">Custom Quote</p>
+          <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0; text-align: left;">
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Ongoing consultation</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Full project involvement</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Regular check-ins</li>
+            <li style="margin-bottom: 0.5rem; color: #aaa;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i>Dedicated support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Section -->
+<section class="contact-section" id="booking">
+  <div class="contact-content">
+
+    <div class="contact-header">
+      <span class="section-label">Get Started</span>
+      <h2>Book Your Consultation</h2>
+      <p class="contact-description">
+        Ready to take your project to the next level? Schedule a consultation and let's discuss how we can bring your vision to life.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3 class="contact-info-title">What to Expect</h3>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="info-content">
+            <h4>Flexible Scheduling</h4>
+            <p>Book at your convenience with sessions available weekdays and weekends.</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="info-content">
+            <h4>Virtual Meetings</h4>
+            <p>All consultations are conducted via Zoom for your convenience.</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <div class="info-content">
+            <h4>Detailed Report</h4>
+            <p>Receive a comprehensive report with actionable recommendations.</p>
+          </div>
+        </div>
+
+        <div class="social-connect">
+          <h4>Payment Methods</h4>
+          <p class="social-hint">Secure payment options available</p>
+          <div class="social-icons">
+            <div class="social-btn" title="Bank Transfer">
+              <i class="fas fa-university"></i>
+            </div>
+            <div class="social-btn" title="PayPal">
+              <i class="fab fa-paypal"></i>
+            </div>
+            <div class="social-btn" title="Stripe">
+              <i class="fab fa-stripe-s"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="consultationForm">
+        <h3 class="form-title">Schedule Your Session</h3>
+
+        <div class="form-group">
+          <label for="consultation-name">Full Name <span class="required">*</span></label>
+          <input type="text" id="consultation-name" name="name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="consultation-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="consultation-email" name="email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="consultation-company">Company/Organization</label>
+          <input type="text" id="consultation-company" name="company" placeholder="Your company name">
+        </div>
+
+        <div class="form-group">
+          <label for="consultation-service">Service Interested In <span class="required">*</span></label>
+          <select id="consultation-service" name="service" required>
+            <option value="">Select a service</option>
+            <option value="ui-ux-design">UI/UX Design Consultation</option>
+            <option value="technical-architecture">Technical Architecture</option>
+            <option value="seo-strategy">SEO Strategy & Optimization</option>
+            <option value="performance">Performance Optimization</option>
+            <option value="general">General Consultation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="consultation-budget">Project Budget Range</label>
+          <select id="consultation-budget" name="budget">
+            <option value="">Select budget range</option>
+            <option value="under-5k">Under $5,000</option>
+            <option value="5k-15k">$5,000 - $15,000</option>
+            <option value="15k-50k">$15,000 - $50,000</option>
+            <option value="over-50k">Over $50,000</option>
+            <option value="discuss">Let's discuss</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="consultation-message">Project Details <span class="required">*</span></label>
+          <textarea id="consultation-message" name="message" rows="6" placeholder="Tell me about your project, goals, timeline, and any specific questions you have..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">
+          <i class="fas fa-calendar-check"></i>
+          <span>Book Consultation</span>
+        </button>
+        <p class="form-note">You'll receive a confirmation email with meeting details within 24 hours</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+
+    <div class="footer-main">
+      <div class="footer-section brand">
+        <h3>SoftRay</h3>
+        <p>Web Developer & Designer crafting digital <br> experiences that inspire and engage.</p>
+        <div class="footer-socials">
+          <a href="https://x.com/soft__ray3?s=21" target="_blank" rel="noopener noreferrer" title="Twitter" class="footer-social-link">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/soft.ray3?igsh=OGNpb2lsbG1zN3E5&utm_source=qr" target="_blank" rel="noopener noreferrer" title="Instagram" class="footer-social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:onahraymond18@gmail.com" title="Email" class="footer-social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+
+
+      <div class="footer-section links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">UI/UX Design</a></li>
+          <li><a href="#services">Web Development</a></li>
+          <li><a href="#services">SEO Consultation</a></li>
+          <li><a href="#services">Performance Optimization</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="copyright">&copy; 2025 <strong>SoftRay</strong>. All rights reserved.</p>
+      <!-- <p class="credit">Designed & Developed with <i class="fas fa-heart"></i> by Ugochukwu Raymond</p> -->
+    </div>
+  </div>
+</footer>
+
+</div>
+
+
+
+<script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+        <script>
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"2349046972848","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+          window.onload = () => {
+            _waEmbed(wa_btnSetting);
+          };
+        </script>
+
+
+
+  <script src="https://smtpjs.com/v3/smtp.js"> </script>
+<script src="asset/js/main.js"></script>
+
+
+  </body>
+
+</html>
