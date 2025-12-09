@@ -365,17 +365,38 @@ body.loaded #preloader {
   .projects-section {
   background: #f7f7f7;
    font-family: 'Poppins', sans-serif;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 .projects-content {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
+  padding: 0 1rem;
 }
 .projects-content h2 {
   color: #222;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.projects-header {
   margin-bottom: 2rem;
+}
+
+.section-label {
+  display: inline-block;
+  color: #E67B45;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.projects-subtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 .projects-list {
   display: flex;
@@ -512,6 +533,17 @@ body.loaded #preloader {
   .projects-list {
     flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    max-width: 100%;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .projects-content h2 {
+    font-size: 1.5rem;
   }
 }
     @media (max-width: 768px) {
@@ -1075,19 +1107,40 @@ body.loaded #preloader {
 .projects-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.5rem;
   justify-content: center;
+  padding: 0 1rem;
 }
 .project-card {
   /* background: #fff; */
   border-radius: 1rem;
   /* box-shadow: 0 4px 16px rgba(0,0,0,0.08); */
-  padding: 1.5rem;
-  max-width: 80%;
+  padding: 1rem;
+  max-width: 90%;
   width: 100%;
   border: 1px solid rgba(53, 53, 53, 0.239) ;
   text-align: left;
   transition: transform 0.2s;
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.project-img {
+  height: 120px;
+}
+
+.project-link {
+  font-size: 0.9rem;
+  padding: 12px;
 }
 
 
@@ -1099,10 +1152,57 @@ body.loaded #preloader {
   margin: 0 auto;
 }
 
+/* Mobile Projects Styles */
+.projects-section {
+  padding: 1.5rem 0.5rem;
+}
 
+.projects-content {
+  padding: 0 0.5rem;
+}
 
+.projects-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
 
+.projects-subtitle {
+  font-size: 0.9rem;
+}
 
+.projects-list {
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+.project-card {
+  max-width: 100%;
+  padding: 0.75rem;
+  margin: 0 auto;
+}
+
+.project-img {
+  height: 100px;
+  margin-bottom: 0.75rem;
+}
+
+.project-card h3 {
+  font-size: 1.1rem;
+  margin: 0.3rem 0;
+}
+
+.project-card p {
+  font-size: 0.85rem;
+  margin: 0.3rem 0;
+}
+
+.project-link {
+  padding: 10px;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+  }
 
 
 

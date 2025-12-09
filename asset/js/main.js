@@ -1,4 +1,3 @@
-
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.getElementById('menuToggle');
@@ -32,17 +31,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Play/Pause Audio Button Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const audio = document.getElementById('myAudio'); 
+  const audio = document.getElementById('myAudio');
   const playPauseBtn = document.getElementById('playPauseBtn');
   if (audio && playPauseBtn) {
     playPauseBtn.addEventListener('click', function() {
       if (audio.paused) {
         audio.play();
         playPauseBtn.textContent = 'Pause';
-      } else { 
+      } else {
         audio.pause();
         playPauseBtn.textContent = 'Play';
-      } 
+      }
     });
     // Set initial button text
     playPauseBtn.textContent = audio.paused ? 'Play' : 'Pause';
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    
 // document.addEventListener("DOMContentLoaded", function() {
 //   const preloader = document.getElementById('preloader');
 //   window.addEventListener('load', function() {
@@ -64,10 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('downloadBtn').addEventListener('click', function() {
     const link = document.createElement('a');
     link.href = 'softray.pdf';  // PDF file location
-    link.download = 'softray.pdf';   // Downloaded file name 
+    link.download = 'softray.pdf';   // Downloaded file name
     link.click();
 });
-
 
 
 
@@ -96,37 +93,5 @@ function sendMail() {
     .catch(err=>console.log(err));
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
