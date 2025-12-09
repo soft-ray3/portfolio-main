@@ -32,17 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Play/Pause Audio Button Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const audio = document.getElementById('myAudio');
+  const audio = document.getElementById('myAudio'); 
   const playPauseBtn = document.getElementById('playPauseBtn');
   if (audio && playPauseBtn) {
     playPauseBtn.addEventListener('click', function() {
       if (audio.paused) {
         audio.play();
         playPauseBtn.textContent = 'Pause';
-      } else {
+      } else { 
         audio.pause();
         playPauseBtn.textContent = 'Play';
-      }
+      } 
     });
     // Set initial button text
     playPauseBtn.textContent = audio.paused ? 'Play' : 'Pause';
