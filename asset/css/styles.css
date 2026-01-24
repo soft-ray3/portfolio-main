@@ -40,12 +40,11 @@ body {
   padding: 0;
   scroll-behavior: smooth;
   font-family: 'Poppins', sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: #ffffff;
+  color: #333;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 html {
@@ -667,55 +666,6 @@ body.loaded #preloader {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: var(--navbar-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  margin-left: 1rem;
-}
-
-.theme-toggle:hover {
-  background: var(--bg-secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-.theme-toggle i {
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle .fa-sun {
-  color: #f39c12;
-}
-
-.theme-toggle .fa-moon {
-  color: #3498db;
-  opacity: 0;
-  transform: rotate(180deg);
-}
-
-[data-theme="dark"] .theme-toggle .fa-sun {
-  opacity: 0;
-  transform: rotate(-180deg);
-}
-
-[data-theme="dark"] .theme-toggle .fa-moon {
-  opacity: 1;
-  transform: rotate(0deg);
-}
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .navbar {
@@ -736,16 +686,16 @@ body.loaded #preloader {
     left: 0;
     right: 0;
     flex-direction: column;
-    background: var(--navbar-bg);
+    background: white;
     width: 100%;
     text-align: center;
     gap: 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     max-height: calc(100vh - 70px);
     overflow-y: auto;
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px var(--shadow);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     z-index: 999;
   }
 
@@ -758,13 +708,13 @@ body.loaded #preloader {
     justify-content: center;
     padding: 1rem;
     border-radius: 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-primary);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    color: #333;
   }
 
   .nav-link:hover {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.05);
+    color: #000;
   }
 
   .resume-btn {
@@ -791,10 +741,6 @@ body.loaded #preloader {
 
   .brand-text {
     font-size: 1.3rem;
-  }
-
-  .theme-toggle {
-    display: none;
   }
 }
 
@@ -3107,7 +3053,7 @@ gallery-item
         display: none;
         flex-direction: column;
         width: 100%;
-        background: #222;
+        background: #ffffff;
         position: absolute;
         top: 60px;
         left: 0;
