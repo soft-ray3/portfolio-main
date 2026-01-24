@@ -94,4 +94,46 @@ function sendMail() {
 
 }
 
+// Theme Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
 
+  // Check for saved theme preference or default to light mode
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', currentTheme);
+
+  // Update toggle button based on current theme
+  updateThemeToggle(currentTheme);
+
+  // Toggle theme on button click
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeToggle(newTheme);
+    });
+  }
+
+  function updateThemeToggle(theme) {
+    if (themeToggle) {
+      const sunIcon = themeToggle.querySelector('.fa-sun');
+      const moonIcon = themeToggle.querySelector('.fa-moon');
+
+      if (theme === 'dark') {
+        sunIcon.style.opacity = '0';
+        sunIcon.style.transform = 'rotate(-180deg)';
+        moonIcon.style.opacity = '1';
+        moonIcon.style.transform = 'rotate(0deg)';
+      } else {
+        sunIcon.style.opacity = '1';
+        sunIcon.style.transform = 'rotate(0deg)';
+        moonIcon.style.opacity = '0';
+        moonIcon.style.transform = 'rotate(180deg)';
+      }
+    }
+  }
+});
