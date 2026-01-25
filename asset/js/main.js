@@ -29,46 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Play/Pause Audio Button Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const audio = document.getElementById('myAudio');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-
-  
-  if (audio && playPauseBtn) {
-    // Auto-unmute and play on first interaction
-    const autoPlayAudio = () => {
-      if (audio.muted) {
-        audio.muted = false;
-        audio.play().catch(err => console.log('Autoplay prevented:', err));
-        playPauseBtn.textContent = 'Pause';
-        document.removeEventListener('click', autoPlayAudio);
-        document.removeEventListener('scroll', autoPlayAudio);
-      }
-    };
-
-    // Trigger on first user interaction (click or scroll)
-    document.addEventListener('click', autoPlayAudio);
-    document.addEventListener('scroll', autoPlayAudio);
-    document.addEventListener('touchstart', autoPlayAudio);
-
-    // Toggle play/pause on button click
-    playPauseBtn.addEventListener('click', function() {
-      if (audio.paused) {
-        audio.muted = false;
-        audio.play().catch(err => console.log('Play failed:', err));
-        playPauseBtn.textContent = 'Pause';
-      } else {
-        audio.pause();
-        playPauseBtn.textContent = 'Play';
-      }
-    });
-
-    // Set initial button text based on autoplay state
-    playPauseBtn.textContent = audio.paused ? 'Play' : 'Pause';
-  }
-});
-
 // Stats Counter Animation
 document.addEventListener('DOMContentLoaded', function() {
   const statCards = document.querySelectorAll('.stat-card');
