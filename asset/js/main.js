@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
+ 
 // Stats Counter Animation
 document.addEventListener('DOMContentLoaded', function() {
   const statCards = document.querySelectorAll('.stat-card');
@@ -364,68 +364,155 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Background Audio Controls
+// Feedback Slider Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const audio = document.getElementById('backgroundAudio');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const muteBtn = document.getElementById('muteBtn');
-  const volumeSlider = document.getElementById('volumeSlider');
+  const feedbackTrack = document.querySelector('.feedback-track');
+  const feedbackCards = document.querySelectorAll('.feedback-card');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const indicators = document.querySelectorAll('.indicator');
 
-  if (audio && playPauseBtn && muteBtn && volumeSlider) {
-    // Set initial volume
-    audio.volume = volumeSlider.value;
+  if (!feedbackTrack || !feedbackCards.length) return;
 
-    // Play/Pause functionality
-    playPauseBtn.addEventListener('click', function() {
-      if (audio.paused) {
-        audio.play();
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  let currentSlide = 0;
+  const totalSlides = feedbackCards.length;
+  let autoPlayInterval;
+  const autoPlayDelay = 5000; // 5 seconds
+
+  // Initialize slider
+  function initSlider() {
+    updateSlider();
+    startAutoPlay();
+  }
+
+  // Update slider position and active states
+  function updateSlider() {
+    // Update track position
+    const translateX = -currentSlide * 25; // 25% for each slide (1/4 width)
+    feedbackTrack.style.transform = `translateX(${translateX}%)`;
+
+    // Update card active states
+    feedbackCards.forEach((card, index) => {
+      if (index === currentSlide) {
+        card.classList.add('active');
       } else {
-        audio.pause();
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        card.classList.remove('active');
       }
     });
 
-    // Mute/Unmute functionality
-    muteBtn.addEventListener('click', function() {
-      if (audio.muted) {
-        audio.muted = false;
-        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-        volumeSlider.value = audio.volume;
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+      if (index === currentSlide) {
+        indicator.classList.add('active');
       } else {
-        audio.muted = true;
-        muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-        volumeSlider.value = 0;
-      }
-    });
-
-    // Volume control
-    volumeSlider.addEventListener('input', function() {
-      audio.volume = this.value;
-      if (audio.volume > 0) {
-        audio.muted = false;
-        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-      } else {
-        audio.muted = true;
-        muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-      }
-    });
-
-    // Update play/pause button when audio state changes
-    audio.addEventListener('play', function() {
-      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    });
-
-    audio.addEventListener('pause', function() {
-      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-    });
-
-    // Handle autoplay policy (some browsers block autoplay)
-    audio.addEventListener('canplaythrough', function() {
-      // If audio is paused due to autoplay policy, show play button
-      if (audio.paused) {
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        indicator.classList.remove('active');
       }
     });
   }
+
+  // Go to next slide
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+    resetAutoPlay();
+  }
+
+  // Go to previous slide
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlider();
+    resetAutoPlay();
+  }
+
+  // Go to specific slide
+  function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    updateSlider();
+    resetAutoPlay();
+  }
+
+  // Start auto-play
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+  }
+
+  // Reset auto-play timer
+  function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    startAutoPlay();
+  }
+
+  // Stop auto-play
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+
+  // Event listeners
+  if (nextBtn) {
+    nextBtn.addEventListener('click', nextSlide);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+  }
+
+  // Indicator click events
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => goToSlide(index));
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+    }
+  });
+
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const feedbackContainer = document.querySelector('.feedback-container');
+
+  if (feedbackContainer) {
+    feedbackContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay(); // Pause auto-play during touch
+    });
+
+    feedbackContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoPlay(); // Resume auto-play after touch
+    });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchStartX - touchEndX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swiped left - next slide
+        nextSlide();
+      } else {
+        // Swiped right - previous slide
+        prevSlide();
+      }
+    }
+  }
+
+  // Pause auto-play on hover
+  const feedbackSection = document.querySelector('.feedback-section');
+  if (feedbackSection) {
+    feedbackSection.addEventListener('mouseenter', stopAutoPlay);
+    feedbackSection.addEventListener('mouseleave', startAutoPlay);
+  }
+
+  // Initialize the slider
+  initSlider();
 });
+
+
