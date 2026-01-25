@@ -363,3 +363,69 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   });
 });
+
+// Background Audio Controls
+document.addEventListener('DOMContentLoaded', function() {
+  const audio = document.getElementById('backgroundAudio');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const muteBtn = document.getElementById('muteBtn');
+  const volumeSlider = document.getElementById('volumeSlider');
+
+  if (audio && playPauseBtn && muteBtn && volumeSlider) {
+    // Set initial volume
+    audio.volume = volumeSlider.value;
+
+    // Play/Pause functionality
+    playPauseBtn.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      } else {
+        audio.pause();
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+      }
+    });
+
+    // Mute/Unmute functionality
+    muteBtn.addEventListener('click', function() {
+      if (audio.muted) {
+        audio.muted = false;
+        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+        volumeSlider.value = audio.volume;
+      } else {
+        audio.muted = true;
+        muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        volumeSlider.value = 0;
+      }
+    });
+
+    // Volume control
+    volumeSlider.addEventListener('input', function() {
+      audio.volume = this.value;
+      if (audio.volume > 0) {
+        audio.muted = false;
+        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+      } else {
+        audio.muted = true;
+        muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      }
+    });
+
+    // Update play/pause button when audio state changes
+    audio.addEventListener('play', function() {
+      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    });
+
+    audio.addEventListener('pause', function() {
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    });
+
+    // Handle autoplay policy (some browsers block autoplay)
+    audio.addEventListener('canplaythrough', function() {
+      // If audio is paused due to autoplay policy, show play button
+      if (audio.paused) {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+      }
+    });
+  }
+});
