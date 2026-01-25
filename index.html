@@ -27,18 +27,12 @@
     <!-- css link  -->
     <link rel="stylesheet" href="/asset/css/styles.css">
     <link rel="shortcut icon" href="asset/image/avater.JPG" type="image/x-icon">
+    
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
     <title>RayfolioS - Portfolio</title>
  
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "AX5zccDXx8DhbYBHG",
-      });
-   })();
-</script>
+
 
 
 </head>
@@ -80,9 +74,9 @@
 
          <ul class="nav-menu" id="navMenu">
            <li><a href="/index.html" class="nav-link"><span>Home</span></a></li>
-           <li><a href="/about.html" class="nav-link"><span>About</span></a></li>
+           <li><a href="#about" class="nav-link"><span>About</span></a></li>
            <li><a href="#projects" class="nav-link"><span>Projects</span></a></li>
-          <li><a href="/contact.html" class="nav-link"><span>Contact</span></a></li>
+          <li><a href="#contact" class="nav-link"><span>Contact</span></a></li>
           <li><a href="Rayfolio.pdf" class="nav-link " download><i class="fas fa-download"></i><span>Resume</span></a></li>
          </ul>
 
@@ -168,14 +162,14 @@
           </div>
         </div>
 
-        
+<!--         
            
         <div class="aboutme-cta">
           <a href="/about.html" class="aboutme-button">
             <span>More</span>
             <i class="fas fa-arrow-right"></i>
           </a>
-        </div>
+        </div> -->
       </div>
 
       
@@ -197,47 +191,48 @@
 <section class="stats-section">
   <div class="stats-container">
     <div class="stats-header">
+      <span class="section-label">Achievements</span>
       <h2>By The Numbers</h2>
       <p>A snapshot of my journey and impact</p>
     </div>
 
     <div class="stats-grid">
-      <div class="stat-card">
+      <div class="stat-card" data-target="30" data-suffix="+">
         <div class="stat-icon">
           <i class="fas fa-briefcase"></i>
         </div>
         <div class="stat-content">
-          <h3 class="stat-number">30+</h3>
+          <h3 class="stat-number">0+</h3>
           <p class="stat-label">Projects Completed</p>
         </div>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card" data-target="20" data-suffix="+">
         <div class="stat-icon">
           <i class="fas fa-smile"></i>
         </div>
         <div class="stat-content">
-          <h3 class="stat-number">20+</h3>
+          <h3 class="stat-number">0+</h3>
           <p class="stat-label">Happy Clients</p>
         </div>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card" data-target="4.9" data-suffix="/5">
         <div class="stat-icon">
           <i class="fas fa-star"></i>
         </div>
         <div class="stat-content">
-          <h3 class="stat-number">4.9/5</h3>
+          <h3 class="stat-number">0/5</h3>
           <p class="stat-label">Average Rating</p>
         </div>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card" data-target="3" data-suffix="+ Yrs">
         <div class="stat-icon">
           <i class="fas fa-code"></i>
         </div>
         <div class="stat-content">
-          <h3 class="stat-number">3+ Yrs</h3>
+          <h3 class="stat-number">0+ Yrs</h3>
           <p class="stat-label">Experience</p>
         </div>
       </div>
@@ -245,7 +240,18 @@
   </div>
 </section>
 
+<section class="projects-section" id="projects">
+  <div class="projects-content">
 
+    <div class="projects-header">
+      <span class="section-label">My Work</span>
+      <h2>Featured Projects</h2>
+      <p class="projects-subtitle">
+        A showcase of my recent web development projects, demonstrating my skills in creating modern, responsive, and user-friendly websites.
+      </p>
+    </div>
+
+    <div class="projects-list">
       <article class="project-card" data-category="e-commerce">
         <div class="project-image-wrapper">
           <img src="asset/image/Screenshot_24-7-2025_233041_lamifragrance.com.jpeg" alt="Lami Fragrance - Luxury fragrance brand website" class="project-img">
@@ -264,10 +270,10 @@
           </div>
           <p>A luxury fragrance brand offering unique and captivating scents with an elegant online shopping experience.</p>
          
-          <a href="https://lamifragrance.com" class="project-link" target="_blank" rel="noopener noreferrer">
+          <!-- <a href="https://lamifragrance.com" class="project-link" target="_blank" rel="noopener noreferrer">
             <span>Explore Project</span>
             <i class="fas fa-external-link-alt"></i>
-          </a>
+          </a> -->
         </div>
       </article>
 
@@ -289,10 +295,10 @@
           </div>
           <p>Providing healthcare, ICT training, and youth development programs to communities in need.</p>
         
-          <a href="https://thekiekfoundation.org" class="project-link" target="_blank" rel="noopener noreferrer">
+          <!-- <a href="https://thekiekfoundation.org" class="project-link" target="_blank" rel="noopener noreferrer">
             <span>Explore Project</span>
             <i class="fas fa-external-link-alt"></i>
-          </a>
+          </a> -->
         </div>
       </article>
 
@@ -314,10 +320,10 @@
           </div>
           <p>Clean beauty brand offering ethically sourced ingredients like shea and baobab oils with sustainable practices.</p>
          
-          <a href="https://randrskincare.co" class="project-link" target="_blank" rel="noopener noreferrer">
+          <!-- <a href="https://randrskincare.co" class="project-link" target="_blank" rel="noopener noreferrer">
             <span>Explore Project</span>
             <i class="fas fa-external-link-alt"></i>
-          </a>
+          </a> -->
         </div>
       </article>
 
@@ -339,10 +345,10 @@
           </div>
           <p>Fashion & streetwear brand celebrating culture and global community unity with bold designs.</p>
          
-          <a href="https://naijanation.org" class="project-link" target="_blank" rel="noopener noreferrer">
+          <!-- <a href="https://naijanation.org" class="project-link" target="_blank" rel="noopener noreferrer">
             <span>Explore Project</span>
             <i class="fas fa-external-link-alt"></i>
-          </a>
+          </a> -->
         </div>
       </article>
     </div>
@@ -353,6 +359,132 @@
 
 
 
+
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+  <div class="contact-content">
+
+    <div class="contact-header">
+      <span class="section-label">Let's Connect</span>
+      <h2>Get in Touch</h2>
+      <p class="contact-description">
+        I'm always excited about new opportunities and collaborations. Whether you have a project in mind or just want to chat, feel free to reach out!
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+       
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="info-content">
+            <h4>Email</h4>
+            <p><a href="mailto:onahraymond18@gmail.com">onahraymond18@gmail.com</a></p>
+            <!-- <p class="info-hint">Response within 24 hours</p> -->
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="info-content">
+            <h4>Phone</h4>
+            <p><a href="tel:+2349046972848">09046972848</a></p>
+            <!-- <p class="info-hint">Best during business hours</p> -->
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="info-content">
+            <h4>Location</h4>
+            <p>Delta State, Nigeria</p>
+            <!-- <p class="info-hint">Based in West Africa</p> -->
+          </div>
+        </div>
+
+       
+      </div>
+
+      <!-- Modern Contact Form using Formspree -->
+      <div class="contact-form-wrapper">
+        <div class="form-header">
+          <h3>Send me a Message</h3>
+          <p>I'll get back to you as soon as possible</p>
+        </div>
+        
+        <form id="contactForm" >
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="form-input" 
+              placeholder="Your name"
+              required
+            >
+            <span class="form-error" id="nameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="your@email.com"
+              required
+            >
+            <span class="form-error" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              class="form-input" 
+              placeholder="What's this about?"
+              required
+            >
+            <span class="form-error" id="subjectError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-textarea" 
+              placeholder="Tell me more about your project or inquiry..."
+              rows="5"
+              required
+            ></textarea>
+            <span class="form-error" id="messageError"></span>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      
+      </div>
+        
+      
+</section>
 
 <!-- Footer -->
 <footer class="footer">
@@ -369,40 +501,14 @@
           <a href="https://www.instagram.com/soft.ray3?igsh=OGNpb2lsbG1zN3E5&utm_source=qr" target="_blank" rel="noopener noreferrer" title="Instagram" class="footer-social-link">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="mailto:onahraymond18@gmail.com" title="Email" class="footer-social-link">
-            <i class="fas fa-envelope"></i>
+          
+          <a href="https://www.tiktok.com/@soft.ray3" target="_blank" rel="noopener noreferrer" title="TikTok" class="footer-social-link">
+            <i class="fab fa-tiktok"></i>
           </a>
         </div>
       </div>
 
-      <!-- <div class="footer-section links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#aboutme">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div> -->
-
-      <div class="footer-section links">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#projects">SEO</a></li>
-          <li><a href="#projects">Web Design</a></li>
-          <li><a href="consultation.html">Consultation</a></li>
-          <li><a href="#projects">Web Development</a></li>
-        </ul>
-      </div>
-
-      <!-- <div class="footer-section contact">
-        <h4>Contact</h4>
-        <p><a href="mailto:onahraymond18@gmail.com">onahraymond18@gmail.com</a></p>
-        <p>Nigeria</p>
-        <a href="/Rayfolio.pdf" class="resume-link">
-          <i class="fas fa-download"></i>
-          Download Resume
-        </a> -->
+  
       </div>
     </div>
 
@@ -418,18 +524,20 @@
 </div>
 
 
-
+<!-- 
 <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
         <script>
-          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"2349046972848","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"left","whatsAppNumber":"2349046972848","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
           window.onload = () => {
             _waEmbed(wa_btnSetting);
           };
-        </script>
+        </script> -->
 
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="scroll-to-top" title="Scroll to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
-
-  <script src="https://smtpjs.com/v3/smtp.js"> </script>
 <script src="asset/js/main.js"></script>
 
 

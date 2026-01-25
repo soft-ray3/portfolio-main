@@ -48,6 +48,85 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// Stats Counter Animation
+document.addEventListener('DOMContentLoaded', function() {
+  const statCards = document.querySelectorAll('.stat-card');
+  let hasAnimated = false;
+
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        animateCounters();
+      }
+    });
+  }, observerOptions);
+
+  function animateCounters() {
+    statCards.forEach(card => {
+      const numberElement = card.querySelector('.stat-number');
+      const targetValue = parseFloat(card.getAttribute('data-target'));
+      const suffix = card.getAttribute('data-suffix') || '';
+      const duration = 2000; // 2 seconds
+      const start = 0;
+      const increment = targetValue / (duration / 16); // 60fps
+      let current = start;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < targetValue) {
+          // Format the number appropriately
+          if (targetValue < 10) {
+            numberElement.textContent = current.toFixed(1) + suffix;
+          } else {
+            numberElement.textContent = Math.floor(current) + suffix;
+          }
+          requestAnimationFrame(updateCounter);
+        } else {
+          // Ensure we display the exact target value
+          numberElement.textContent = (targetValue % 1 !== 0 ? targetValue.toFixed(1) : Math.floor(targetValue)) + suffix;
+        }
+      };
+
+      updateCounter();
+    });
+  }
+
+  // Observe the first stat card to trigger animation when section comes into view
+  if (statCards.length > 0) {
+    observer.observe(statCards[0]);
+  }
+});
+
+// Scroll to Top Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+  if (scrollToTopBtn) {
+    // Show button when scrolling down
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    // Scroll to top when button is clicked
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+});
+
 
 
 // document.addEventListener("DOMContentLoaded", function() {
@@ -71,25 +150,167 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
 
 
 
-function sendMail() {
-  var params = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
+// Project Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
 
-  const serviceID = "service_noxrp8c";
-  const templateID = "template_09sfi98";
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
 
-    emailjs.send(serviceID, templateID, params)
-    .then(res=>{
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
-        console.log(res);
-        alert("Your message sent successfully!!")
+      const filterValue = button.getAttribute('data-filter');
 
-    })
-    .catch(err=>console.log(err));
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filterValue === 'all' || category === filterValue) {
+          card.style.display = 'block';
+          card.style.animation = 'fadeIn 0.5s ease-in-out';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
 
-}
+
+
+// Contact Form Handling with EmailJS
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize EmailJS
+  // You need to replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+  emailjs.init('rlvGa6mLworrawg4k');
+  
+  const contactForm = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Form submitted');
+      
+      // Form validation
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      let isValid = true;
+      
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('subjectError').textContent = '';
+      document.getElementById('messageError').textContent = '';
+      
+      // Validate name
+      if (name === '' || name.length < 2) {
+        document.getElementById('nameError').textContent = 'Please enter a valid name (at least 2 characters)';
+        isValid = false;
+      }
+      
+      // Validate email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('emailError').textContent = 'Please enter a valid email address';
+        isValid = false;
+      }
+      
+      // Validate subject
+      if (subject === '' || subject.length < 3) {
+        document.getElementById('subjectError').textContent = 'Please enter a subject (at least 3 characters)';
+        isValid = false;
+      }
+      
+      // Validate message
+      if (message === '' || message.length < 10) {
+        document.getElementById('messageError').textContent = 'Please enter a message (at least 10 characters)';
+        isValid = false;
+      }
+      
+      if (isValid) {
+        // Show loading state
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Prepare template parameters for EmailJS
+        const templateParams = {
+          to_email: 'onahraymond18@gmail.com',
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message
+        };
+        
+        console.log('Sending email with EmailJS...');
+        
+        // Send email using EmailJS
+        emailjs.send('service_noxrp8c', 'template_09sfi98', templateParams)
+          .then(function(response) {
+            console.log('Email sent successfully!', response.status, response.text);
+            
+            // Success
+            formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+            formMessage.className = 'form-message success';
+            formMessage.style.display = 'block';
+            contactForm.reset();
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+              formMessage.textContent = '';
+              formMessage.className = 'form-message';
+              formMessage.style.display = 'none';
+            }, 5000);
+          }, function(error) {
+            console.error('Email sending failed:', error);
+            
+            // Error
+            formMessage.textContent = '✗ Oops! Something went wrong. Please try again.';
+            formMessage.className = 'form-message error';
+            formMessage.style.display = 'block';
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          });
+      }
+      
+      return false;
+    });
+  }
+});
+
+// Embedded Project iframes Loading Handler
+document.addEventListener('DOMContentLoaded', function() {
+  const iframes = document.querySelectorAll('.responsive-iframe-container iframe');
+  const loaders = document.querySelectorAll('.iframe-loader');
+
+  iframes.forEach((iframe, index) => {
+    const loader = loaders[index];
+
+    // Hide loader when iframe loads
+    iframe.onload = function() {
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    };
+
+    // Handle iframe load error
+    iframe.onerror = function() {
+      if (loader) {
+        loader.innerHTML = '<div style="text-align: center; color: #888;"><p style="margin: 0; font-size: 0.95rem;">Unable to load preview</p></div>';
+      }
+    };
+  });
+});

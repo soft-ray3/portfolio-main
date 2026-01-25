@@ -1,26 +1,12 @@
-# Project Section Modernization - TODO List
+# TODO: Modernize Project Section and Add Contact Me Section
 
-## Phase 1: HTML Structure Updates
-- [ ] Add filter buttons for project categories
-- [ ] Add tech stack tags to each project card
-- [ ] Add modal structure for project details
-- [ ] Update project data attributes for filtering
-
-## Phase 2: CSS Enhancements
-- [ ] Add modern filter button styling
-- [ ] Improve project card animations and hover effects
-- [ ] Add staggered reveal animations
-- [ ] Style the project details modal
-- [ ] Enhance visual design with better gradients and shadows
-
-## Phase 3: JavaScript Functionality
-- [ ] Implement filter functionality
-- [ ] Add modal open/close logic
-- [ ] Add smooth scroll and animation triggers
-- [ ] Implement loading animations
-
-## Phase 4: Testing and Refinement
-- [ ] Test filtering functionality
-- [ ] Test modal interactions
-- [ ] Ensure responsive design works
-- [ ] Optimize animations for performance
+## Tasks
+- [x] Update index.html: Add filter bar to projects section with buttons for All, E-Commerce, Non-Profit, Beauty, Fashion
+- [x] Update index.html: Add contact me section before footer using Formspree
+- [x] Update index.html: Change contact nav link to #contact
+- [x] Update asset/css/styles.css: Add styles for project filter buttons
+- [x] Update asset/js/main.js: Add JavaScript for project filtering functionality
+- [x] Update asset/js/main.js: Add Formspree AJAX submission code
+- [x] Remove EmailJS dependencies from index.html head if not needed
+- [ ] Test contact form submission
+- [ ] Verify filter functionality
