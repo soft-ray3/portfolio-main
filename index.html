@@ -27,9 +27,6 @@
     <!-- css link  -->
     <link rel="stylesheet" href="/asset/css/styles.css">
     <link rel="shortcut icon" href="asset/image/avater.JPG" type="image/x-icon">
-    
-    <!-- EmailJS Library -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
     <title>RayfolioS - Portfolio</title>
  
 
@@ -123,7 +120,7 @@
     </div> -->
 
     <!-- Background audio -->
-    <audio id="myAudio" src="Joey%27s%20Formal%20Waltz.mp3" preload="metadata"></audio>
+    <audio id="myAudio" src="Joey%27s%20Formal%20Waltz.mp3" preload="metadata" autoplay muted></audio>
   </div>
 </section>
 
@@ -420,68 +417,57 @@
           <p>I'll get back to you as soon as possible</p>
         </div>
         
-        <form id="contactForm" >
-          <div class="form-group">
-            <label for="name" class="form-label">Full Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              class="form-input" 
-              placeholder="Your name"
-              required
-            >
-            <span class="form-error" id="nameError"></span>
+  <!-- Right Side: Booking Form -->
+          <div class="booking-form-wrapper">
+            <form id="consultationForm" class="consultation-form">
+              <div class="form-group">
+                <label for="consName" class="form-label">Full Name</label>
+                <input 
+                  type="text" 
+                  id="consName" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="Your name"
+                  required
+                >
+                <span class="form-error" id="consNameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="consEmail" class="form-label">Email Address</label>
+                <input 
+                  type="email" 
+                  id="consEmail" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="your@email.com"
+                  required
+                >
+                <span class="form-error" id="consEmailError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="consMessage" class="form-label">Message</label>
+                <textarea 
+                  id="consMessage" 
+                  name="message" 
+                  class="form-textarea" 
+                  placeholder="Tell me about your project, challenges, or goals..."
+                  rows="4"
+                  required
+                ></textarea>
+                <span class="form-error" id="consMessageError"></span>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <span>Send Message</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+
+              <div id="consFormMessage" class="form-message"></div>
+            </form>
           </div>
 
-          <div class="form-group">
-            <label for="email" class="form-label">Email Address</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              class="form-input" 
-              placeholder="your@email.com"
-              required
-            >
-            <span class="form-error" id="emailError"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="subject" class="form-label">Subject</label>
-            <input 
-              type="text" 
-              id="subject" 
-              name="subject" 
-              class="form-input" 
-              placeholder="What's this about?"
-              required
-            >
-            <span class="form-error" id="subjectError"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="message" class="form-label">Message</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              class="form-textarea" 
-              placeholder="Tell me more about your project or inquiry..."
-              rows="5"
-              required
-            ></textarea>
-            <span class="form-error" id="messageError"></span>
-          </div>
-
-          <button type="submit" class="submit-btn">
-            <span>Send Message</span>
-            <i class="fas fa-paper-plane"></i>
-          </button>
-
-          <div id="formMessage" class="form-message"></div>
-        </form>
-      
-      </div>
         
       
 </section>
@@ -539,6 +525,7 @@
 </button>
 
 <script src="asset/js/main.js"></script>
+<script src="asset/js/consultation.js"></script>
 
 
 

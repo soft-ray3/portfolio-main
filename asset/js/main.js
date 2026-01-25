@@ -33,17 +33,38 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const audio = document.getElementById('myAudio');
   const playPauseBtn = document.getElementById('playPauseBtn');
+
+  
   if (audio && playPauseBtn) {
+    // Auto-unmute and play on first interaction
+    const autoPlayAudio = () => {
+      if (audio.muted) {
+        audio.muted = false;
+        audio.play().catch(err => console.log('Autoplay prevented:', err));
+        playPauseBtn.textContent = 'Pause';
+        document.removeEventListener('click', autoPlayAudio);
+        document.removeEventListener('scroll', autoPlayAudio);
+      }
+    };
+
+    // Trigger on first user interaction (click or scroll)
+    document.addEventListener('click', autoPlayAudio);
+    document.addEventListener('scroll', autoPlayAudio);
+    document.addEventListener('touchstart', autoPlayAudio);
+
+    // Toggle play/pause on button click
     playPauseBtn.addEventListener('click', function() {
       if (audio.paused) {
-        audio.play();
+        audio.muted = false;
+        audio.play().catch(err => console.log('Play failed:', err));
         playPauseBtn.textContent = 'Pause';
       } else {
         audio.pause();
         playPauseBtn.textContent = 'Play';
       }
     });
-    // Set initial button text
+
+    // Set initial button text based on autoplay state
     playPauseBtn.textContent = audio.paused ? 'Play' : 'Pause';
   }
 });
@@ -127,28 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   const preloader = document.getElementById('preloader');
-//   window.addEventListener('load', function() {
-//     preloader.style.display = 'none';
-//   });
-// });
-
-
-
 document.getElementById('downloadBtn').addEventListener('click', function() {
     const link = document.createElement('a');
     link.href = 'softray.pdf';  // PDF file location
     link.download = 'softray.pdf';   // Downloaded file name
     link.click();
 });
-
-
-
-
-
 
 // Project Filter Functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -177,13 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
-
-// Contact Form Handling with EmailJS
+// Contact Form Handling with FormSpree
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize EmailJS
-  // You need to replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-  emailjs.init('rlvGa6mLworrawg4k');
+  // FormSpree endpoint - Update this with your FormSpree form ID
+  // Get your form ID from https://formspree.io/
+  const FORMSPREE_ID = 'myzgndov'; // Replace with your actual FormSpree ID
   
   const contactForm = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
@@ -192,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log('Form submitted');
+      console.log('Contact form submitted');
       
       // Form validation
       const name = document.getElementById('name').value.trim();
@@ -240,40 +243,54 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        // Prepare template parameters for EmailJS
-        const templateParams = {
-          to_email: 'onahraymond18@gmail.com',
-          from_name: name,
-          from_email: email,
-          subject: subject,
-          message: message
-        };
+        // Prepare form data for FormSpree
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', subject);
+        formData.append('message', message);
         
-        console.log('Sending email with EmailJS...');
+        console.log('Sending email with FormSpree to:', `https://formspree.io/f/${FORMSPREE_ID}`);
         
-        // Send email using EmailJS
-        emailjs.send('service_noxrp8c', 'template_09sfi98', templateParams)
+        // Send email using FormSpree
+        fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
           .then(function(response) {
-            console.log('Email sent successfully!', response.status, response.text);
+            console.log('Form submitted, response status:', response.status);
+            console.log('Response ok:', response.ok);
             
-            // Success
-            formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
-            formMessage.className = 'form-message success';
-            formMessage.style.display = 'block';
-            contactForm.reset();
-            
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            
-            // Clear message after 5 seconds
-            setTimeout(() => {
-              formMessage.textContent = '';
-              formMessage.className = 'form-message';
-              formMessage.style.display = 'none';
-            }, 5000);
-          }, function(error) {
-            console.error('Email sending failed:', error);
+            if (response.ok) {
+              console.log('Email sent successfully!');
+              
+              // Success
+              formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+              formMessage.className = 'form-message success';
+              formMessage.style.display = 'block';
+              contactForm.reset();
+              
+              // Reset button
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              
+              // Clear message after 5 seconds
+              setTimeout(() => {
+                formMessage.textContent = '';
+                formMessage.className = 'form-message';
+                formMessage.style.display = 'none';
+              }, 5000);
+            } else {
+              console.error('Response not ok, status:', response.status);
+              throw new Error('Form submission failed with status: ' + response.status);
+            }
+          })
+          .catch(function(error) {
+            console.error('Email sending failed:', error.message);
+            console.error('Error:', error);
             
             // Error
             formMessage.textContent = '✗ Oops! Something went wrong. Please try again.';
@@ -290,6 +307,78 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Embedded Project iframes Loading Handler
+document.addEventListener('DOMContentLoaded', function() {
+  const iframes = document.querySelectorAll('.responsive-iframe-container iframe');
+  const loaders = document.querySelectorAll('.iframe-loader');
+
+  iframes.forEach((iframe, index) => {
+    const loader = loaders[index];
+
+    // Hide loader when iframe loads
+    iframe.onload = function() {
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    };
+
+    // Handle iframe load error
+    iframe.onerror = function() {
+      if (loader) {
+        loader.innerHTML = '<div style="text-align: center; color: #888;"><p style="margin: 0; font-size: 0.95rem;">Unable to load preview</p></div>';
+      }
+    };
+
+    // Set a timeout to show fallback if iframe doesn't load in 4 seconds
+    setTimeout(() => {
+      if (loader && loader.style.display !== 'none') {
+        const fallback = iframe.parentElement.querySelector('.iframe-fallback');
+        if (fallback) {
+          loader.style.display = 'none';
+          fallback.style.display = 'flex';
+        }
+      }
+    }, 4000);
+  });
+});
+
+// Project Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      const filterValue = button.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filterValue === 'all' || category === filterValue) {
+          card.style.display = 'block';
+          card.style.animation = 'fadeIn 0.5s ease-in-out';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+
+// Embedded Project iframes Loading Handler
+
+
+
+
+
+
+
+
 
 // Embedded Project iframes Loading Handler
 document.addEventListener('DOMContentLoaded', function() {
