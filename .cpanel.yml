@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/CPANELUSER/repositories/rayfolio/
+    - export DEPLOYPATH=/home/rayfolio/repositories/portfolio-main/
     - /usr/local/bin/composer install --no-dev --optimize-autoloader --working-dir=$DEPLOYPATH
     - /bin/chmod -R 775 $DEPLOYPATH/storage $DEPLOYPATH/bootstrap/cache
     - php $DEPLOYPATH/artisan migrate --force
