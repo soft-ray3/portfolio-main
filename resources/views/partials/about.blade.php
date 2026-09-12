@@ -5,7 +5,7 @@
             {{-- Left: copy --}}
             <div class="rv">
                 <span class="label text-accent">Get to Know Me</span>
-                <h2 id="about-heading" class="mt-3 text-3xl font-semibold text-ink sm:text-4xl">About Me</h2>  
+                <h2 id="about-heading" class="mt-3 text-3xl font-semibold text-ink sm:text-4xl">About Me</h2>
 
                 <div class="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg">
                     <p>
