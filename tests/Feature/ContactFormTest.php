@@ -28,7 +28,9 @@ class ContactFormTest extends TestCase
 
         $response = $this->post(route('contact.store'), $this->payload());
 
-        $response->assertRedirect();
+        // Sent back to the contact section specifically, so the success
+        // banner is immediately visible without scrolling.
+        $response->assertRedirect(route('home') . '#contact');
         $response->assertSessionHas('success');
 
         $this->assertDatabaseHas('contact_messages', [
@@ -49,7 +51,9 @@ class ContactFormTest extends TestCase
             'email' => 'not-an-email',
         ]));
 
-        $response->assertRedirect('/');
+        // Sent back to the contact section specifically (not the top of
+        // the page), so the visitor actually sees their errors.
+        $response->assertRedirect(route('home') . '#contact');
         $response->assertSessionHasErrors('email');
 
         $this->assertDatabaseCount('contact_messages', 0);

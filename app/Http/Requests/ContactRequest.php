@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 
 class ContactRequest extends FormRequest
 {
@@ -12,6 +14,16 @@ class ContactRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    /**
+     * On validation failure, send the visitor back to the contact form
+     * itself (not the top of the page) so their errors are visible.
+     */
+    protected function failedValidation(Validator $validator): void
+    {
+        throw (new ValidationException($validator))
+            ->redirectTo(route('home') . '#contact');
     }
 
     /**

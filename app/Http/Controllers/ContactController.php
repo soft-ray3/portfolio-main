@@ -33,8 +33,7 @@ class ContactController extends Controller
         Mail::to(config('portfolio.contact_email'))
             ->queue(new ContactMessageReceived($contactMessage));
 
-        return redirect()
-            ->back()
+        return redirect(route('home') . '#contact')
             ->with('success', 'Thanks for reaching out. I will get back to you soon.');
     }
 }

@@ -51,8 +51,13 @@
             {{-- Right: form card --}}
             <div class="rv rounded-card border border-line bg-card p-7 shadow-lift sm:p-9">
                 @if (session('success'))
-                    <div class="mb-6 rounded-card border border-accent/30 bg-accent/10 px-5 py-4 text-sm text-ink">
-                        {{ session('success') }}
+                    <div class="mb-6 flex items-center gap-3 rounded-card border border-accent/30 bg-accent/10 px-5 py-4 text-sm text-ink" role="status">
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                        </span>
+                        <span>{{ session('success') }}</span>
                     </div>
                 @endif
 
