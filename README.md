@@ -41,6 +41,8 @@ Personal portfolio for Raymond Onah (Ugochukwu Raymond Onah), built as a Laravel
    php artisan migrate
    ```
 
+   On hosts without shell access to run `artisan migrate` (e.g. some shared cPanel setups), import `database/sql/rayfolio_schema.sql` directly via phpMyAdmin instead — see below.
+
 4. Build front-end assets:
 
    ```bash
@@ -54,6 +56,24 @@ Personal portfolio for Raymond Onah (Ugochukwu Raymond Onah), built as a Laravel
    ```bash
    php artisan serve
    ```
+
+## Database schema (`database/sql/rayfolio_schema.sql`)
+
+A ready-to-import SQL file mirroring the current migrations exactly (generated from a freshly-migrated database, not hand-written) — every table `php artisan migrate` would create: `users`, `cache`, `cache_locks`, `jobs`, `job_batches`, `failed_jobs`, `sessions`, `password_reset_tokens`, `migrations`, and `contact_messages`. No sample/test data, just the schema.
+
+Use it when you'd rather import via phpMyAdmin than rely on shell access to run `artisan migrate` (common on shared hosting):
+
+1. In cPanel, create the database and a user with full privileges on it (**MySQL Databases**), and point `.env`'s `DB_*` values at them.
+2. Open **phpMyAdmin**, select that database, go to **Import**, and upload `database/sql/rayfolio_schema.sql`.
+
+The file also seeds the `migrations` tracking table, marking all four migrations as already applied — so if `artisan migrate --force` *also* runs later (e.g. as part of the `.cpanel.yml` deploy tasks), it correctly sees nothing left to do instead of trying to recreate these tables and erroring.
+
+If you add or change migrations later, regenerate it:
+```bash
+php artisan migrate:fresh
+mysqldump -u root --no-data --skip-comments rayfolio > database/sql/rayfolio_schema.sql
+```
+(then manually re-add the `INSERT INTO migrations ...` block at the bottom of the `migrations` table's section, listing every migration file with `batch = 1`)
 
 ## Mail configuration
 
