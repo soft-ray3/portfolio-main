@@ -1,0 +1,11 @@
+<x-layout>
+    <main>
+        @include('partials.hero')
+        @include('partials.strip')
+        @include('partials.about')
+        @include('partials.work')
+        @include('partials.experience')
+        @include('partials.help')
+        @include('partials.contact')
+    </main>
+</x-layout>
